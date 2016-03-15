@@ -12,3 +12,6 @@ How to reproduce an error:
   `curl -X GET http://localhost:6000/ -H "Authorization: Bearer #token#"`
   
 You will get `Access is denied` error, because this controller protected with `@PreAuthorize("#oauth2.hasScope('ui')")` annotation, which has unexpected behavior at the moment.
+
+UPD:
+Custom implementation of ResourceServerTokenServices solves the problem. Have a look at CustomUserInfoTokenServices in account-service.
