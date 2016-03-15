@@ -12,6 +12,14 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class AccountServiceApplication {
 
+	@Autowired
+	private ResourceServerProperties sso;
+
+	@Bean
+	public ResourceServerTokenServices myUserInfoTokenServices() {
+		return new CustomUserInfoTokenServices(sso.getUserInfoUri(), sso.getClientId());
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(AccountServiceApplication.class, args);
 	}
