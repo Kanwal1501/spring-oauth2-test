@@ -10,7 +10,7 @@ import java.security.Principal;
 @RestController
 public class AccountController {
 
-	@PreAuthorize("#oauth2.hasScope('ui')") // denies access for requests with the right scope
+	@PreAuthorize("#oauth2.hasScope('ui')") // denies access without CustomUserInfoTokenServices
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String hello(Principal principal) {
 		return "hello, " + principal.getName();
